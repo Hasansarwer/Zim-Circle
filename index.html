@@ -31,11 +31,7 @@ function ready(frame, stage, stageW, stageH) { // parameters for backwards compa
 	// Here is an example of ZIM code which is JavaScript
 	// we assign a Circle to a variable to use it later
 	  
-	const circle = new Circle(100,red).center().drag();
-	
-	// the code below is just to help you find the CODE tab
-	// delete these three lines now that you are here!
-	new Label("Press the CODE tab and read intructions!").pos(0,40,CENTER,BOTTOM)
+	const circle = new Circle(100,blue).center().drag();
 	
 	// BACKGROUND 
 	// Normally, we code in a text editor such as VS Code
@@ -47,72 +43,63 @@ function ready(frame, stage, stageW, stageH) { // parameters for backwards compa
 	// We are given the following variables to help in our code
 	// F, S, W, H or frame, stage, stageW, stageH
 	
-	// TUTORIAL
-	// Here are some tips and things to try
-	// 1. lines with // are comments and are ignored 
-	// 2. uppercase and lowercase matter 
-	// 3. this is JavaScript with ZIM commands 
-	// 4. see the DOCS tab for all the ZIM commands 
-	// 5. learn more ZIM at https://zimjs.com/learn
-	// 6. select and use CTRL / to uncomment below
-	
 	// // A. SET THE STAGE COLOR AND THE OUTER COLOR
-	// F.color = blue;
-	// F.outerColor = grey;
+	F.color = green;
+	F.outerColor = grey;
 	
 	// // B. MAKE A TRASH CAN
-	// const trash = new Rectangle(100,100,purple)
-	//     .pos(50,50,RIGHT,BOTTOM)
-	//     .cur() // give the trash a pointer cursor when active
-	//     .noMouse(); // until drop circle on the trash
+	const trash = new Rectangle(100,100,purple)
+	    .pos(50,50,RIGHT,BOTTOM)
+	    .cur() // give the trash a pointer cursor when active
+	    .noMouse(); // until drop circle on the trash
 	    
-	// // check if circle is hitting trash
-	// circle.on("pressup", ()=>{
-	//     if (circle.hitTestCircleRect(trash)) {
-	//         circle.removeFrom();
-	//         trash.color = red;
-	//         trash.mouse(); // make trash interactive
-	//         S.update(); // to see change
-	//     }
-	// });
-	// // reset circle when pressing trash
-	// trash.on("mousedown", ()=>{
-	//     circle.center();
-	//     trash.color = purple;
-	//     trash.noMouse();
-	//     S.update();
-	// });
+	// check if circle is hitting trash
+	circle.on("pressup", ()=>{
+	    if (circle.hitTestCircleRect(trash)) {
+	        circle.removeFrom();
+	        trash.color = red;
+	        trash.mouse(); // make trash interactive
+	        S.update(); // to see change
+	    }
+	});
+	// reset circle when pressing trash
+	trash.on("mousedown", ()=>{
+	    circle.center();
+	    trash.color = purple;
+	    trash.noMouse();
+	    S.update();
+	});
 	
 	// // C. ADD PATTERNS AND ICONS 
 	// // must check the Pizzazz checkbox at top
-	// makePattern("slants",null,20,70,70)
-	//     .alp(.1) // alpha (0-1)
-	//     .center()
-	//     .bot(); // add to bottom
-	// makeIcon("rotate", white)
-	//     .alp(.8)
-	//     .center(trash);
+	makePattern("slants",null,20,70,70)
+	    .alp(0.1) // alpha (0-1)
+	    .center()
+	    .bot(); // add to bottom
+	makeIcon("rotate", white)
+	    .alp(.2)
+	    .center(trash);
 	
 	// // D. MAKE A LABEL
 	// // optionally, use a STYLE (like CSS)
-	// STYLE = {backgroundColor:white}; // or {bgColor:white}
-	// const label = new Label("Throw circle in can")
-	//     .sca(.7) // scale
-	//     .alp(.7) // alpha
-	//     .ske(10) // skew
-	//     .loc(50,50) // locate x and y
+	STYLE = {backgroundColor:white}; // or {bgColor:white}
+	const label = new Label("Throw circle in can")
+	    .sca(.7) // scale
+	    .alp(.7) // alpha
+	    .ske(10) // skew
+	    .loc(50,50) // locate x and y
 	
 	// // E. ANIMATE THE LABEL 
 	// // this could be chained to the label after loc()
 	// // here we use ZIM DUO to pass a config object 
 	// // with the properties matching parameter names
-	// label.animate({
-	//     props:{x:-300},
-	//     from:true, // will animate from -300 
-	//     wait:1, // wait 1 second 
-	//     time:.5, // animate in half a second
-	//     ease:"backOut" // optionally set an ease
-	// });
+	label.animate({
+	    props:{x:-300},
+	    from:true, // will animate from -300 
+	    wait:1, // wait 1 second 
+	    time:.5, // animate in half a second
+	    ease:"backOut" // optionally set an ease
+	});
 	
 	// // F. NOW TRY THE BASIC ZAPP DEMOS - HAVE FUN!
 	
